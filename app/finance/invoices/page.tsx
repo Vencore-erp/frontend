@@ -15,19 +15,19 @@ const INVOICES = [
 
 export default function InvoiceListPage() {
     const columns = [
-        { header: 'Invoice #', accessorKey: 'id', cell: (item: any) => <Link href={`/finance/invoices/${item.id}`} className="font-mono font-medium text-[#0052CC] hover:underline">{item.id}</Link> },
-        { header: 'Vendor', accessorKey: 'vendor' },
-        { header: 'Inv. Date', accessorKey: 'date' },
-        { header: 'Due Date', accessorKey: 'due', cell: (item: any) => <span className="font-medium text-slate-700">{item.due}</span> },
-        { header: 'Amount (IDR)', accessorKey: 'amount', align: 'right', cell: (item: any) => <span className="font-mono">{item.amount.toLocaleString('id-ID')}</span> },
+        { header: 'Invoice #', accessorKey: 'id' as const, cell: (item: any) => <Link href={`/finance/invoices/${item.id}`} className="font-mono font-medium text-[#0052CC] hover:underline">{item.id}</Link> },
+        { header: 'Vendor', accessorKey: 'vendor' as const },
+        { header: 'Inv. Date', accessorKey: 'date' as const },
+        { header: 'Due Date', accessorKey: 'due' as const, cell: (item: any) => <span className="font-medium text-slate-700">{item.due}</span> },
+        { header: 'Amount (IDR)', accessorKey: 'amount' as const, align: 'right' as const, cell: (item: any) => <span className="font-mono">{item.amount.toLocaleString('id-ID')}</span> },
         {
-            header: '3-Way Match', accessorKey: 'match', align: 'center', cell: (item: any) => (
+            header: '3-Way Match', accessorKey: 'match' as const, align: 'center' as const, cell: (item: any) => (
                 item.match === 'PASS'
                     ? <span className="text-[10px] font-bold text-emerald-600 bg-emerald-50 px-1.5 py-0.5 rounded border border-emerald-100">MATCHED</span>
                     : <span className="text-[10px] font-bold text-rose-600 bg-rose-50 px-1.5 py-0.5 rounded border border-rose-100">MISMATCH</span>
             )
         },
-        { header: 'Status', accessorKey: 'status', cell: (item: any) => <StatusBadge status={item.status} /> },
+        { header: 'Status', accessorKey: 'status' as const, cell: (item: any) => <StatusBadge status={item.status} /> },
     ];
 
     return (
