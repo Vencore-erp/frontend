@@ -1,6 +1,11 @@
 'use client';
 
 import React, { useState } from 'react';
+import { Sidebar } from '@/components/layout/Sidebar';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { Button } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
+import { Badge } from '@/components/ui/badge';
 import {
     Building2,
     FileText,
@@ -17,7 +22,11 @@ import {
     Settings,
     HelpCircle,
     Menu,
-    ArrowUpRight
+    ArrowUpRight,
+    ArrowDownRight,
+    Clock,
+    AlertCircle,
+    CheckCircle2
 } from 'lucide-react';
 import {
     AreaChart,

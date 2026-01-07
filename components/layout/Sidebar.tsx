@@ -19,7 +19,7 @@ import {
 } from 'lucide-react';
 
 interface SidebarProps {
-    role: 'OPERATOR' | 'SUPERVISOR' | 'FINANCE' | 'ADMIN' | 'VENDOR';
+    role: 'OPERATOR' | 'SUPERVISOR' | 'FINANCE' | 'ADMIN' | 'VENDOR' | 'PROCUREMENT';
 }
 
 export function Sidebar({ role }: SidebarProps) {
@@ -56,6 +56,13 @@ export function Sidebar({ role }: SidebarProps) {
             { href: '/vendor/rfq', label: 'Open RFQs', icon: Search },
             { href: '/vendor/orders', label: 'My Orders', icon: ShoppingBag },
             { href: '/vendor/invoices', label: 'Invoices', icon: FileText },
+        ],
+        PROCUREMENT: [
+            { href: '/procurement/dashboard', label: 'Dashboard', icon: LayoutDashboard },
+            { href: '/procurement/pr', label: 'Requisitions', icon: FileText },
+            { href: '/procurement/rfq', label: 'RFQ Management', icon: Search },
+            { href: '/procurement/po', label: 'Purchase Orders', icon: ShoppingBag },
+            { href: '/procurement/vendors', label: 'Vendors', icon: Building2 },
         ]
     };
 
