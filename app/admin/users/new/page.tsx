@@ -29,7 +29,7 @@ const userFormSchema = z.object({
     phone: z.string().optional(),
     employeeId: z.string().min(3, { message: "Employee ID is required." }),
     role: z.enum(["OPERATOR", "SUPERVISOR", "FINANCE", "ADMIN"], {
-        errorMap: () => ({ message: "Please select a role." }),
+        message: "Please select a role.",
     }),
     department: z.string().min(1, { message: "Please select a department." }),
     reportsTo: z.string().optional(),
