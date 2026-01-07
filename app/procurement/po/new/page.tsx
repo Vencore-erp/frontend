@@ -30,8 +30,8 @@ const poFormSchema = z.object({
     paymentTerms: z.string().min(1, { message: "Payment terms are required." }),
     items: z.array(z.object({
         description: z.string().min(1, "Description is required"),
-        qty: z.coerce.number().min(1, "Qty must be at least 1"),
-        unitPrice: z.coerce.number().min(0, "Price must be positive"),
+        qty: z.number().min(1, "Qty must be at least 1"),
+        unitPrice: z.number().min(0, "Price must be positive"),
     })).min(1, "At least one item is required"),
     notes: z.string().optional(),
 })
