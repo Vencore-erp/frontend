@@ -1,6 +1,7 @@
 'use client';
 
 import React from 'react';
+import Link from 'next/link';
 import {
     FileText,
     Search,
@@ -33,10 +34,10 @@ export default function OperatorDashboard() {
                     <h1 className="text-2xl font-bold text-[#0B1120] tracking-tight">Operator Workspace</h1>
                     <p className="text-sm text-slate-500 mt-1">Manage your requisitions and sourcing events.</p>
                 </div>
-                <button className="flex items-center px-4 py-2 bg-[#0052CC] text-white text-sm font-medium rounded shadow-sm hover:bg-blue-700 transition-colors">
+                <Link href="/procurement/pr/create" className="flex items-center px-4 py-2 bg-[#0052CC] text-white text-sm font-medium rounded shadow-sm hover:bg-blue-700 transition-colors">
                     <Plus className="w-4 h-4 mr-2" />
                     New Requisition
-                </button>
+                </Link>
             </div>
 
             {/* Metrics Row */}

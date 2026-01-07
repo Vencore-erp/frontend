@@ -43,7 +43,7 @@ This document tracks the implementation status of all routes in the NEXUS PROCUR
 | Route | Feature | Status | Notes |
 |-------|---------|--------|-------|
 | `/procurement/pr` | PR List | ✅ Done | |
-| `/procurement/pr/new` | PR Create | ✅ Done | |
+| `/procurement/pr/create` | PR Create | ✅ Done | |
 | `/procurement/pr/[id]` | PR Detail | ✅ Done | |
 | `/procurement/pr/[id]/approve`| PR Approval | ✅ Done | Supervisor specific |
 | `/procurement/rfq` | RFQ List | ✅ Done | |
