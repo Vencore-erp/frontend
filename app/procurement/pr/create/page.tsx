@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 import Link from 'next/link';
 import { ChevronLeft, Plus, Trash2, UploadCloud, Save, Send } from 'lucide-react';
 import { useRouter } from 'next/navigation';
+import { toast } from 'sonner';
 
 export default function NewPRPage() {
     const router = useRouter();
@@ -35,6 +36,17 @@ export default function NewPRPage() {
     };
 
     const grandTotal = lineItems.reduce((acc, item) => acc + item.total, 0);
+
+    const handleSubmit = () => {
+        toast.promise(new Promise(resolve => setTimeout(resolve, 1500)), {
+            loading: 'Submitting Requisition...',
+            success: () => {
+                router.push('/procurement/pr');
+                return 'PR Draft Submitted Successfully!';
+            },
+            error: 'Failed to submit'
+        });
+    };
 
     return (
         <div className="p-8 max-w-5xl mx-auto space-y-8">
@@ -197,8 +209,13 @@ export default function NewPRPage() {
                         </div>
                     </div>
 
+
+
                     <div className="flex flex-col gap-3 pt-4">
-                        <button className="w-full py-2.5 bg-[#0052CC] hover:bg-blue-700 text-white font-bold text-sm rounded shadow-sm transition-all flex items-center justify-center gap-2">
+                        <button
+                            onClick={handleSubmit}
+                            className="w-full py-2.5 bg-[#0052CC] hover:bg-blue-700 text-white font-bold text-sm rounded shadow-sm transition-all flex items-center justify-center gap-2"
+                        >
                             <Send className="w-4 h-4" /> Submit Request
                         </button>
                         <button className="w-full py-2.5 bg-white border border-slate-300 hover:bg-slate-50 text-slate-700 font-medium text-sm rounded shadow-sm transition-all flex items-center justify-center gap-2">
