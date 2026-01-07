@@ -33,9 +33,9 @@ const userFormSchema = z.object({
     }),
     department: z.string().min(1, { message: "Please select a department." }),
     reportsTo: z.string().optional(),
-    sendWelcomeEmail: z.boolean().default(true),
-    requirePasswordChange: z.boolean().default(true),
-    enable2FA: z.boolean().default(false),
+    sendWelcomeEmail: z.boolean(),
+    requirePasswordChange: z.boolean(),
+    enable2FA: z.boolean(),
 })
 
 type UserFormValues = z.infer<typeof userFormSchema>
