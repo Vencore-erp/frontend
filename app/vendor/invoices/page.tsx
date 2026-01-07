@@ -13,12 +13,12 @@ const VENDOR_INVOICES = [
 
 export default function VendorInvoicesPage() {
     const columns = [
-        { header: 'Invoice #', accessorKey: 'id', cell: (item: any) => <span className="font-mono font-medium text-[#0052CC]">{item.id}</span> },
-        { header: 'PO Reference', accessorKey: 'po', cell: (item: any) => <span className="font-mono text-xs">{item.po}</span> },
-        { header: 'Submitted Date', accessorKey: 'date' },
-        { header: 'Amount (IDR)', accessorKey: 'amount', align: 'right', cell: (item: any) => <span className="font-mono">{item.amount.toLocaleString('id-ID')}</span> },
-        { header: 'Est. Payment', accessorKey: 'paymentDate', cell: (item: any) => <span className="text-xs font-medium text-slate-600">{item.paymentDate}</span> },
-        { header: 'Status', accessorKey: 'status', cell: (item: any) => <StatusBadge status={item.status} /> },
+        { header: 'Invoice #', accessorKey: 'id' as const, cell: (item: any) => <span className="font-mono font-medium text-[#0052CC]">{item.id}</span> },
+        { header: 'PO Reference', accessorKey: 'po' as const, cell: (item: any) => <span className="font-mono text-xs">{item.po}</span> },
+        { header: 'Submitted Date', accessorKey: 'date' as const },
+        { header: 'Amount (IDR)', accessorKey: 'amount' as const, align: 'right' as const, cell: (item: any) => <span className="font-mono">{item.amount.toLocaleString('id-ID')}</span> },
+        { header: 'Est. Payment', accessorKey: 'paymentDate' as const, cell: (item: any) => <span className="text-xs font-medium text-slate-600">{item.paymentDate}</span> },
+        { header: 'Status', accessorKey: 'status' as const, cell: (item: any) => <StatusBadge status={item.status} /> },
     ];
 
     return (

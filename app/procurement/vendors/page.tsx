@@ -22,11 +22,11 @@ export default function VendorListPage() {
     };
 
     const columns = [
-        { header: 'Vendor ID', accessorKey: 'id', cell: (item: any) => <span className="font-mono font-medium text-[#0052CC]">{item.id}</span> },
-        { header: 'Company Name', accessorKey: 'name', className: 'font-bold' },
-        { header: 'Category', accessorKey: 'category' },
+        { header: 'Vendor ID', accessorKey: 'id' as const, cell: (item: any) => <span className="font-mono font-medium text-[#0052CC]">{item.id}</span> },
+        { header: 'Company Name', accessorKey: 'name' as const, className: 'font-bold' },
+        { header: 'Category', accessorKey: 'category' as const },
         {
-            header: 'Risk Rating', accessorKey: 'rating', cell: (item: any) => (
+            header: 'Risk Rating', accessorKey: 'rating' as const, cell: (item: any) => (
                 <span className={cn(
                     "font-medium text-xs",
                     item.rating.includes('A') ? "text-emerald-600" : item.rating.includes('B') ? "text-amber-600" : "text-rose-600"
@@ -35,7 +35,7 @@ export default function VendorListPage() {
                 </span>
             )
         },
-        { header: 'Status', accessorKey: 'status', cell: (item: any) => <StatusBadge status={item.status} /> },
+        { header: 'Status', accessorKey: 'status' as const, cell: (item: any) => <StatusBadge status={item.status} /> },
     ];
 
     return (

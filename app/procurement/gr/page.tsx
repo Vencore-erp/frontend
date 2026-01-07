@@ -13,12 +13,12 @@ const GRS = [
 
 export default function GRListPage() {
     const columns = [
-        { header: 'GR Number', accessorKey: 'id', cell: (item: any) => <Link href={`/procurement/gr/${item.id}`} className="font-mono font-medium text-[#0052CC] hover:underline">{item.id}</Link> },
-        { header: 'PO Ref', accessorKey: 'po', cell: (item: any) => <span className="font-mono text-xs">{item.po}</span> },
-        { header: 'Vendor', accessorKey: 'vendor' },
-        { header: 'Received Date', accessorKey: 'date' },
-        { header: 'Item Count', accessorKey: 'items', align: 'center' },
-        { header: 'Status', accessorKey: 'status', cell: (item: any) => <StatusBadge status={item.status} /> },
+        { header: 'GR Number', accessorKey: 'id' as const, cell: (item: any) => <Link href={`/procurement/gr/${item.id}`} className="font-mono font-medium text-[#0052CC] hover:underline">{item.id}</Link> },
+        { header: 'PO Ref', accessorKey: 'po' as const, cell: (item: any) => <span className="font-mono text-xs">{item.po}</span> },
+        { header: 'Vendor', accessorKey: 'vendor' as const },
+        { header: 'Received Date', accessorKey: 'date' as const },
+        { header: 'Item Count', accessorKey: 'items' as const, align: 'center' as const },
+        { header: 'Status', accessorKey: 'status' as const, cell: (item: any) => <StatusBadge status={item.status} /> },
     ];
 
     return (

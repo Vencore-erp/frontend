@@ -41,12 +41,12 @@ export default function PRListPage() {
     };
 
     const columns = [
-        { header: 'PR Number', accessorKey: 'id', cell: (item: any) => <Link href={`/procurement/pr/${item.id}`} className="font-mono font-medium text-[#0052CC] hover:underline">{item.id}</Link> },
-        { header: 'Date', accessorKey: 'date' },
-        { header: 'Description', accessorKey: 'desc', className: 'font-medium' },
-        { header: 'Requester', accessorKey: 'requester', cell: (item: any) => <div>{item.requester}<div className="text-[10px] text-slate-500">{item.dept}</div></div> },
-        { header: 'Amount (IDR)', accessorKey: 'amount', align: 'right', cell: (item: any) => <span className="font-mono">{item.amount.toLocaleString('id-ID')}</span> },
-        { header: 'Status', accessorKey: 'status', cell: (item: any) => <StatusBadge status={item.status} /> },
+        { header: 'PR Number', accessorKey: 'id' as const, cell: (item: any) => <Link href={`/procurement/pr/${item.id}`} className="font-mono font-medium text-[#0052CC] hover:underline">{item.id}</Link> },
+        { header: 'Date', accessorKey: 'date' as const },
+        { header: 'Description', accessorKey: 'desc' as const, className: 'font-medium' },
+        { header: 'Requester', accessorKey: 'requester' as const, cell: (item: any) => <div>{item.requester}<div className="text-[10px] text-slate-500">{item.dept}</div></div> },
+        { header: 'Amount (IDR)', accessorKey: 'amount' as const, align: 'right' as const, cell: (item: any) => <span className="font-mono">{item.amount.toLocaleString('id-ID')}</span> },
+        { header: 'Status', accessorKey: 'status' as const, cell: (item: any) => <StatusBadge status={item.status} /> },
     ];
 
     return (

@@ -14,12 +14,12 @@ const RFQS = [
 
 export default function RFQListPage() {
     const columns = [
-        { header: 'RFQ Number', accessorKey: 'id', cell: (item: any) => <span className="font-mono font-medium text-[#0052CC]">{item.id}</span> },
-        { header: 'Title', accessorKey: 'title', className: 'font-medium' },
-        { header: 'Deadline', accessorKey: 'deadline' },
-        { header: 'Line Items', accessorKey: 'items', align: 'center' },
-        { header: 'Bids Recv', accessorKey: 'bids', align: 'center' },
-        { header: 'Status', accessorKey: 'status', cell: (item: any) => <StatusBadge status={item.status} /> },
+        { header: 'RFQ Number', accessorKey: 'id' as const, cell: (item: any) => <span className="font-mono font-medium text-[#0052CC]">{item.id}</span> },
+        { header: 'Title', accessorKey: 'title' as const, className: 'font-medium' },
+        { header: 'Deadline', accessorKey: 'deadline' as const },
+        { header: 'Line Items', accessorKey: 'items' as const, align: 'center' as const },
+        { header: 'Bids Recv', accessorKey: 'bids' as const, align: 'center' as const },
+        { header: 'Status', accessorKey: 'status' as const, cell: (item: any) => <StatusBadge status={item.status} /> },
     ];
 
     return (

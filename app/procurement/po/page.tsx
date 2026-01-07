@@ -14,12 +14,12 @@ const POS = [
 
 export default function POListPage() {
     const columns = [
-        { header: 'PO Number', accessorKey: 'id', cell: (item: any) => <Link href={`/procurement/po/${item.id}`} className="font-mono font-medium text-[#0052CC] hover:underline">{item.id}</Link> },
-        { header: 'Vendor', accessorKey: 'vendor', className: 'font-bold' },
-        { header: 'Date', accessorKey: 'date' },
-        { header: 'Exp. Delivery', accessorKey: 'delivery' },
-        { header: 'Total (IDR)', accessorKey: 'total', align: 'right', cell: (item: any) => <span className="font-mono">{item.total.toLocaleString('id-ID')}</span> },
-        { header: 'Status', accessorKey: 'status', cell: (item: any) => <StatusBadge status={item.status} /> },
+        { header: 'PO Number', accessorKey: 'id' as const, cell: (item: any) => <Link href={`/procurement/po/${item.id}`} className="font-mono font-medium text-[#0052CC] hover:underline">{item.id}</Link> },
+        { header: 'Vendor', accessorKey: 'vendor' as const, className: 'font-bold' },
+        { header: 'Date', accessorKey: 'date' as const },
+        { header: 'Exp. Delivery', accessorKey: 'delivery' as const },
+        { header: 'Total (IDR)', accessorKey: 'total' as const, align: 'right' as const, cell: (item: any) => <span className="font-mono">{item.total.toLocaleString('id-ID')}</span> },
+        { header: 'Status', accessorKey: 'status' as const, cell: (item: any) => <StatusBadge status={item.status} /> },
     ];
 
     return (
