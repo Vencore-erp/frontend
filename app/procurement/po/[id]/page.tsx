@@ -2,7 +2,7 @@
 
 import React from 'react';
 import Link from 'next/link';
-import { ChevronLeft, Truck, Package, Printer, Download, Mail } from 'lucide-react';
+import { ChevronLeft, Truck, Package, Printer, Download, Mail, FileText } from 'lucide-react';
 import { StatusBadge } from "@/components/ui/status-badge";
 
 export default function PODetailPage({ params }: { params: { id: string } }) {
