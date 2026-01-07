@@ -29,7 +29,7 @@ export default function PaymentQueuePage() {
     const columns = [
         {
             header: '',
-            accessorKey: 'id',
+            accessorKey: 'id' as const,
             cell: (item: any) => (
                 <input
                     type="checkbox"
@@ -42,19 +42,19 @@ export default function PaymentQueuePage() {
         },
         {
             header: 'Invoice #',
-            accessorKey: 'id',
+            accessorKey: 'id' as const,
             cell: (item: any) => (
                 <Link href={`/finance/payments/${item.id}`} className="font-mono font-medium text-[#0052CC] hover:underline">
                     {item.id}
                 </Link>
             )
         },
-        { header: 'Vendor', accessorKey: 'vendor' },
-        { header: 'Amount (IDR)', accessorKey: 'amount', align: 'right', cell: (item: any) => <span className="font-mono font-bold">{item.amount.toLocaleString('id-ID')}</span> },
-        { header: 'Due Date', accessorKey: 'due' },
+        { header: 'Vendor', accessorKey: 'vendor' as const },
+        { header: 'Amount (IDR)', accessorKey: 'amount' as const, align: 'right' as const, cell: (item: any) => <span className="font-mono font-bold">{item.amount.toLocaleString('id-ID')}</span> },
+        { header: 'Due Date', accessorKey: 'due' as const },
         {
             header: 'Days Overdue',
-            accessorKey: 'daysOverdue',
+            accessorKey: 'daysOverdue' as const,
             cell: (item: any) => (
                 item.daysOverdue > 0
                     ? <span className="text-rose-600 font-bold">{item.daysOverdue} days</span>
@@ -63,7 +63,7 @@ export default function PaymentQueuePage() {
         },
         {
             header: 'Priority',
-            accessorKey: 'priority',
+            accessorKey: 'priority' as const,
             cell: (item: any) => {
                 const styles = {
                     'CRITICAL': 'bg-rose-50 text-rose-700 border-rose-200',
@@ -77,7 +77,7 @@ export default function PaymentQueuePage() {
                 );
             }
         },
-        { header: 'Status', accessorKey: 'status', cell: (item: any) => <StatusBadge status={item.status} /> },
+        { header: 'Status', accessorKey: 'status' as const, cell: (item: any) => <StatusBadge status={item.status} /> },
     ];
 
     return (
