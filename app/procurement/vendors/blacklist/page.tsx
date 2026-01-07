@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { CardSpotlight } from '@/components/ui/card-spotlight';
-import { AlertOctagon, RefreshCw, XCircle, Search } from 'lucide-react';
+import { AlertOctagon, RefreshCw, XCircle, Search, FileText } from 'lucide-react';
 import { StatusBadge } from '@/components/ui/status-badge';
 
 const BLACKLISTED_VENDORS = [
