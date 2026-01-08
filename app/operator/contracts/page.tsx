@@ -31,11 +31,11 @@ export default function ContractsPage() {
         <DashboardLayout role="OPERATOR">
             <div className="flex justify-between items-center mb-6">
                 <div>
-                    <h1 className="text-3xl font-bold tracking-tight">Contract Management</h1>
-                    <p className="text-slate-500">Manage vendor agreements and payment milestones.</p>
+                    <h1 className="text-3xl font-bold tracking-tight">Manajemen Kontrak</h1>
+                    <p className="text-slate-500">Kelola perjanjian vendor dan tahapan pembayaran.</p>
                 </div>
                 <Button className="bg-blue-600 hover:bg-blue-700" onClick={() => router.push('/operator/contracts/new')}>
-                    <Plus className="w-4 h-4 mr-2" /> New Contract
+                    <Plus className="w-4 h-4 mr-2" /> Kontrak Baru
                 </Button>
             </div>
 
@@ -45,7 +45,7 @@ export default function ContractsPage() {
                         <div className="relative flex-1">
                             <Search className="absolute left-2.5 top-2.5 h-4 w-4 text-slate-500" />
                             <Input
-                                placeholder="Search by contract number, title, or vendor..."
+                                placeholder="Cari berdasarkan nomor kontrak, judul, atau vendor..."
                                 className="pl-9"
                                 value={searchTerm}
                                 onChange={(e) => setSearchTerm(e.target.value)}
@@ -57,13 +57,13 @@ export default function ContractsPage() {
                     <Table>
                         <TableHeader>
                             <TableRow>
-                                <TableHead>Contract No</TableHead>
-                                <TableHead>Title</TableHead>
+                                <TableHead>No Kontrak</TableHead>
+                                <TableHead>Judul</TableHead>
                                 <TableHead>Vendor</TableHead>
-                                <TableHead>Period</TableHead>
-                                <TableHead>Value (IDR)</TableHead>
+                                <TableHead>Periode</TableHead>
+                                <TableHead>Nilai (IDR)</TableHead>
                                 <TableHead>Status</TableHead>
-                                <TableHead className="text-right">Action</TableHead>
+                                <TableHead className="text-right">Aksi</TableHead>
                             </TableRow>
                         </TableHeader>
                         <TableBody>
@@ -85,11 +85,13 @@ export default function ContractsPage() {
                                             ${contract.status === 'DRAFT' ? 'bg-slate-100 text-slate-700 hover:bg-slate-100' : ''}
                                             ${contract.status === 'PENDING_APPROVAL' ? 'bg-amber-100 text-amber-700 hover:bg-amber-100' : ''}
                                         `}>
-                                            {contract.status}
+                                            {contract.status === 'ACTIVE' ? 'AKTIF' :
+                                                contract.status === 'DRAFT' ? 'DRAFT' :
+                                                    contract.status === 'PENDING_APPROVAL' ? 'MENUNGGU' : contract.status}
                                         </Badge>
                                     </TableCell>
                                     <TableCell className="text-right">
-                                        <Button variant="ghost" size="sm">View</Button>
+                                        <Button variant="ghost" size="sm">Lihat</Button>
                                     </TableCell>
                                 </TableRow>
                             ))}

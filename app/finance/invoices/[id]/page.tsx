@@ -49,7 +49,7 @@ export default function InvoiceDetailPage({ params }: { params: Promise<{ id: st
 
                     {/* 3-Way Match Visualization */}
                     <div className="bg-white p-6 rounded border border-slate-200 shadow-sm">
-                        <h3 className="font-bold text-xs text-[#0B1120] uppercase tracking-wider mb-6">3-Way Match Validation</h3>
+                        <h3 className="font-bold text-xs text-[#0B1120] uppercase tracking-wider mb-6">Validasi 3-Way Match</h3>
 
                         <div className="flex items-center justify-between relative">
                             {/* Connecting Line */}
@@ -60,9 +60,9 @@ export default function InvoiceDetailPage({ params }: { params: Promise<{ id: st
                                 <div className="w-10 h-10 rounded-full bg-emerald-50 border-2 border-emerald-500 flex items-center justify-center text-emerald-600 mb-2 shadow-sm">
                                     <FileText className="w-5 h-5" />
                                 </div>
-                                <p className="text-xs font-bold text-[#0B1120]">Purchase Order</p>
+                                <p className="text-xs font-bold text-[#0B1120]">Purchase Order (PO)</p>
                                 <Link href={`/procurement/po/${INV.po}`} className="text-[10px] font-mono text-[#0052CC] hover:underline">{INV.po}</Link>
-                                <span className="text-[10px] text-emerald-600 font-bold mt-1">Confirmed</span>
+                                <span className="text-[10px] text-emerald-600 font-bold mt-1">Dikonfirmasi</span>
                             </div>
 
                             {/* GR Node */}
@@ -70,9 +70,9 @@ export default function InvoiceDetailPage({ params }: { params: Promise<{ id: st
                                 <div className="w-10 h-10 rounded-full bg-emerald-50 border-2 border-emerald-500 flex items-center justify-center text-emerald-600 mb-2 shadow-sm">
                                     <Check className="w-5 h-5" />
                                 </div>
-                                <p className="text-xs font-bold text-[#0B1120]">Goods Receipt</p>
+                                <p className="text-xs font-bold text-[#0B1120]">Barang Diterima (GR)</p>
                                 <Link href={`/procurement/gr/${INV.gr}`} className="text-[10px] font-mono text-[#0052CC] hover:underline">{INV.gr}</Link>
-                                <span className="text-[10px] text-emerald-600 font-bold mt-1">Received</span>
+                                <span className="text-[10px] text-emerald-600 font-bold mt-1">Diterima</span>
                             </div>
 
                             {/* Invoice Node */}
@@ -80,17 +80,17 @@ export default function InvoiceDetailPage({ params }: { params: Promise<{ id: st
                                 <div className="w-10 h-10 rounded-full bg-blue-50 border-2 border-blue-500 flex items-center justify-center text-blue-600 mb-2 shadow-sm ring-4 ring-blue-50">
                                     <FileText className="w-5 h-5" />
                                 </div>
-                                <p className="text-xs font-bold text-[#0B1120]">Invoice</p>
+                                <p className="text-xs font-bold text-[#0B1120]">Faktur</p>
                                 <span className="text-[10px] font-mono text-slate-500">{INV.id}</span>
-                                <span className="text-[10px] text-blue-600 font-bold mt-1">Current</span>
+                                <span className="text-[10px] text-blue-600 font-bold mt-1">Saat Ini</span>
                             </div>
                         </div>
 
                         <div className="mt-6 p-4 bg-emerald-50 border border-emerald-100 rounded flex items-start gap-3">
                             <Check className="w-5 h-5 text-emerald-600 shrink-0" />
                             <div className="text-xs text-emerald-800">
-                                <p className="font-bold">Match Successful</p>
-                                <p>Invoice line items match perfectly with PO quantity and price, and goods have been marked as received.</p>
+                                <p className="font-bold">Pencocokan Berhasil (Match)</p>
+                                <p>Item baris faktur cocok sempurna dengan kuantitas dan harga PO, serta barang telah ditandai diterima.</p>
                             </div>
                         </div>
                     </div>
@@ -98,14 +98,14 @@ export default function InvoiceDetailPage({ params }: { params: Promise<{ id: st
                     {/* Invoice Items */}
                     <div className="bg-white rounded border border-slate-200 shadow-sm overflow-hidden">
                         <div className="px-6 py-4 border-b border-slate-100 bg-slate-50/50">
-                            <h3 className="font-bold text-xs text-[#0B1120] uppercase tracking-wider">Invoice Lines</h3>
+                            <h3 className="font-bold text-xs text-[#0B1120] uppercase tracking-wider">Item Faktur</h3>
                         </div>
                         <table className="w-full text-left">
                             <thead className="bg-slate-50 text-slate-500 text-[10px] uppercase font-semibold">
                                 <tr>
-                                    <th className="px-6 py-3">Description</th>
+                                    <th className="px-6 py-3">Deskripsi</th>
                                     <th className="px-6 py-3 text-center">Qty</th>
-                                    <th className="px-6 py-3 text-right">Unit Price</th>
+                                    <th className="px-6 py-3 text-right">Harga Satuan</th>
                                     <th className="px-6 py-3 text-right">Total</th>
                                 </tr>
                             </thead>
@@ -125,11 +125,11 @@ export default function InvoiceDetailPage({ params }: { params: Promise<{ id: st
                                     <td className="px-6 py-2 text-right font-mono text-sm text-slate-700">{INV.amount.toLocaleString('id-ID')}</td>
                                 </tr>
                                 <tr>
-                                    <td colSpan={3} className="px-6 py-2 text-right text-xs text-slate-500">VAT (11%):</td>
+                                    <td colSpan={3} className="px-6 py-2 text-right text-xs text-slate-500">PPN (11%):</td>
                                     <td className="px-6 py-2 text-right font-mono text-sm text-slate-700">{INV.tax.toLocaleString('id-ID')}</td>
                                 </tr>
                                 <tr>
-                                    <td colSpan={3} className="px-6 py-3 text-right font-bold text-sm text-[#0B1120]">Total Payable:</td>
+                                    <td colSpan={3} className="px-6 py-3 text-right font-bold text-sm text-[#0B1120]">Total Pembayaran:</td>
                                     <td className="px-6 py-3 text-right font-bold font-mono text-lg text-[#0052CC]">{INV.total.toLocaleString('id-ID')}</td>
                                 </tr>
                             </tfoot>
@@ -142,32 +142,31 @@ export default function InvoiceDetailPage({ params }: { params: Promise<{ id: st
                 <div className="col-span-12 lg:col-span-4 space-y-6">
 
                     <div className="bg-white p-6 rounded border border-slate-200 shadow-sm">
-                        <h4 className="font-bold text-xs text-slate-500 uppercase tracking-wider mb-4">Payment Schedule</h4>
+                        <h4 className="font-bold text-xs text-slate-500 uppercase tracking-wider mb-4">Jadwal Pembayaran</h4>
                         <div className="space-y-4">
                             <div>
-                                <span className="block text-xs text-slate-500 mb-1">Invoice Date</span>
+                                <span className="block text-xs text-slate-500 mb-1">Tanggal Faktur</span>
                                 <span className="font-medium text-[#0B1120]">{INV.date}</span>
                             </div>
                             <div>
-                                <span className="block text-xs text-slate-500 mb-1">Due Date</span>
+                                <span className="block text-xs text-slate-500 mb-1">Jatuh Tempo</span>
                                 <span className="font-medium text-[#0B1120]">{INV.due}</span>
                             </div>
                             <div>
-                                <span className="block text-xs text-slate-500 mb-1">Payment Method</span>
-                                <span className="font-medium text-[#0B1120]">Bank Transfer (BCA)</span>
+                                <span className="block text-xs text-slate-500 mb-1">Metode Pembayaran</span>
+                                <span className="font-medium text-[#0B1120]">Transfer Bank (BCA)</span>
                             </div>
                         </div>
                     </div>
 
                     <div className="flex flex-col gap-3">
                         <button className="w-full py-3 bg-[#0052CC] hover:bg-blue-700 text-white font-bold text-sm rounded shadow-sm transition-all flex items-center justify-center gap-2">
-                            <Check className="w-4 h-4" /> Approve for Payment
+                            <Check className="w-4 h-4" /> Setujui Pembayaran
                         </button>
                         <button className="w-full py-3 bg-white border border-slate-300 hover:bg-slate-50 text-slate-700 font-bold text-sm rounded shadow-sm transition-all flex items-center justify-center gap-2">
-                            <AlertTriangle className="w-4 h-4" /> Raise Dispute
+                            <AlertTriangle className="w-4 h-4" /> Sanggah / Dispute
                         </button>
                     </div>
-
                 </div>
 
             </div>

@@ -39,12 +39,12 @@ export default function ContractDetailPage() {
 
     const handleCreateBill = (milestoneId: number) => {
         toast.promise(new Promise(resolve => setTimeout(resolve, 1000)), {
-            loading: 'Creating Billing Request...',
+            loading: 'Membuat Permintaan Tagihan...',
             success: () => {
                 router.push(`/operator/billing/create?contract=${contract.id}&milestone=${milestoneId}`);
-                return 'Billing Draft Created!';
+                return 'Draft Tagihan Berhasil Dibuat!';
             },
-            error: 'Failed to create bill'
+            error: 'Gagal membuat tagihan'
         });
     };
 
@@ -61,7 +61,7 @@ export default function ContractDetailPage() {
                         <span>•</span>
                         <span>{contract.vendor}</span>
                         <span>•</span>
-                        <Badge className="bg-green-100 text-green-700 hover:bg-green-100">{contract.status}</Badge>
+                        <Badge className="bg-green-100 text-green-700 hover:bg-green-100">{contract.status === 'ACTIVE' ? 'AKTIF' : contract.status}</Badge>
                     </div>
                 </div>
             </div>
@@ -69,7 +69,7 @@ export default function ContractDetailPage() {
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
                 <Card>
                     <CardHeader className="pb-2">
-                        <CardTitle className="text-sm font-medium text-slate-500">Total Contract Value</CardTitle>
+                        <CardTitle className="text-sm font-medium text-slate-500">Total Nilai Kontrak</CardTitle>
                     </CardHeader>
                     <CardContent>
                         <div className="text-2xl font-bold">Rp {contract.totalValue.toLocaleString('id-ID')}</div>
@@ -77,41 +77,41 @@ export default function ContractDetailPage() {
                 </Card>
                 <Card>
                     <CardHeader className="pb-2">
-                        <CardTitle className="text-sm font-medium text-slate-500">Paid Amount</CardTitle>
+                        <CardTitle className="text-sm font-medium text-slate-500">Jumlah Terbayar</CardTitle>
                     </CardHeader>
                     <CardContent>
                         <div className="text-2xl font-bold text-green-600">Rp {contract.paidAmount.toLocaleString('id-ID')}</div>
                         <Progress value={progress} className="h-2 mt-2" />
-                        <p className="text-xs text-slate-500 mt-1">{progress.toFixed(0)}% Completed</p>
+                        <p className="text-xs text-slate-500 mt-1">{progress.toFixed(0)}% Selesai</p>
                     </CardContent>
                 </Card>
                 <Card>
                     <CardHeader className="pb-2">
-                        <CardTitle className="text-sm font-medium text-slate-500">Payment Terms</CardTitle>
+                        <CardTitle className="text-sm font-medium text-slate-500">Ketentuan Pembayaran</CardTitle>
                     </CardHeader>
                     <CardContent>
-                        <div className="text-lg font-medium">{contract.paymentTerms}</div>
-                        <p className="text-sm text-slate-500 mt-1">Period: {contract.period}</p>
+                        <div className="text-lg font-medium">{contract.paymentTerms === 'Termin (Milestone Based)' ? 'Termin (Berbasis Tahapan)' : contract.paymentTerms}</div>
+                        <p className="text-sm text-slate-500 mt-1">Periode: {contract.period}</p>
                     </CardContent>
                 </Card>
             </div>
 
             <Card>
                 <CardHeader>
-                    <CardTitle>Milestone & Payment Schedule</CardTitle>
-                    <CardDescription>Track payment termin progress and create billing requests.</CardDescription>
+                    <CardTitle>Jadwal Termin & Pembayaran</CardTitle>
+                    <CardDescription>Lacak progres pembayaran termin dan buat permintaan penagihan.</CardDescription>
                 </CardHeader>
                 <CardContent>
                     <Table>
                         <TableHeader>
                             <TableRow>
                                 <TableHead className="w-[50px]">#</TableHead>
-                                <TableHead>Milestone Name</TableHead>
-                                <TableHead>Due Date</TableHead>
-                                <TableHead>Percentage</TableHead>
-                                <TableHead>Amount (IDR)</TableHead>
+                                <TableHead>Nama Tahapan</TableHead>
+                                <TableHead>Jatuh Tempo</TableHead>
+                                <TableHead>Persentase</TableHead>
+                                <TableHead>Jumlah (IDR)</TableHead>
                                 <TableHead>Status</TableHead>
-                                <TableHead className="text-right">Action</TableHead>
+                                <TableHead className="text-right">Aksi</TableHead>
                             </TableRow>
                         </TableHeader>
                         <TableBody>
@@ -123,9 +123,9 @@ export default function ContractDetailPage() {
                                     <TableCell>{ms.percentage}%</TableCell>
                                     <TableCell>{ms.amount.toLocaleString('id-ID')}</TableCell>
                                     <TableCell>
-                                        {ms.status === 'PAID' && <Badge className="bg-green-100 text-green-800 border-green-200">PAID</Badge>}
-                                        {ms.status === 'PENDING_BILLING' && <Badge className="bg-blue-50 text-blue-700 border-blue-200">READY TO BILL</Badge>}
-                                        {ms.status === 'NOT_STARTED' && <Badge variant="outline" className="text-slate-400">LOCKED</Badge>}
+                                        {ms.status === 'PAID' && <Badge className="bg-green-100 text-green-800 border-green-200">LUNAS</Badge>}
+                                        {ms.status === 'PENDING_BILLING' && <Badge className="bg-blue-50 text-blue-700 border-blue-200">SIAP DITAGIH</Badge>}
+                                        {ms.status === 'NOT_STARTED' && <Badge variant="outline" className="text-slate-400">TERKUNCI</Badge>}
                                     </TableCell>
                                     <TableCell className="text-right">
                                         {ms.status === 'PAID' && (
@@ -135,7 +135,7 @@ export default function ContractDetailPage() {
                                         )}
                                         {ms.status === 'PENDING_BILLING' && (
                                             <Button size="sm" className="h-8 bg-blue-600 hover:bg-blue-700" onClick={() => handleCreateBill(ms.id)}>
-                                                Create Bill
+                                                Buat Tagihan
                                             </Button>
                                         )}
                                     </TableCell>

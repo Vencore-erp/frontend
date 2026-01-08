@@ -13,6 +13,9 @@ import { toast } from 'sonner';
 export default function LoginPage() {
     const router = useRouter();
     const [isLoading, setIsLoading] = useState(false);
+    const [email, setEmail] = useState('alexander@bank-xyz.com');
+    const [password, setPassword] = useState('password123');
+    const [selectedRole, setSelectedRole] = useState('OPERATOR');
 
     const handleLogin = (role: 'OPERATOR' | 'SUPERVISOR' | 'FINANCE' | 'ADMIN' | 'VENDOR') => {
         setIsLoading(true);
@@ -79,60 +82,113 @@ export default function LoginPage() {
                                 <CardDescription>Enter your corporate credentials to continue.</CardDescription>
                             </CardHeader>
                             <CardContent className="space-y-4">
+
+                                {/* QUICK LOGIN BUTTONS */}
                                 <div className="space-y-2">
-                                    <Label>Select Role (Mock)</Label>
-                                    <select
-                                        className="flex h-10 w-full rounded-md border border-slate-200 bg-white px-3 py-2 text-sm ring-offset-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-950 focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
-                                        onChange={(e) => {
-                                            const role = e.target.value;
-                                            // Auto-fill mock credentials based on role
-                                            if (role === 'OPERATOR') {
-                                                // Default
-                                            }
-                                        }}
-                                        id="role-selector"
-                                    >
-                                        <option value="OPERATOR">Operator (Procurement)</option>
-                                        <option value="SUPERVISOR">Supervisor (Approver)</option>
-                                        <option value="FINANCE">Finance Dept</option>
-                                        <option value="ADMIN">System Admin</option>
-                                    </select>
+                                    <Label className="text-xs text-slate-500 uppercase tracking-wider font-bold">Quick Auto-fill (Testing)</Label>
+                                    <div className="grid grid-cols-2 gap-2">
+                                        <Button
+                                            variant="outline"
+                                            size="sm"
+                                            className="text-xs justify-start border-blue-200 bg-blue-50 text-blue-700 hover:bg-blue-100"
+                                            onClick={() => {
+                                                setEmail('alexander@bank-xyz.com');
+                                                setPassword('password123');
+                                                setSelectedRole('OPERATOR');
+                                                toast.info('Auto-filled: Operator Credentials');
+                                            }}
+                                        >
+                                            <CheckCircle2 className="w-3 h-3 mr-2" />
+                                            Operator
+                                        </Button>
+                                        <Button
+                                            variant="outline"
+                                            size="sm"
+                                            className="text-xs justify-start border-purple-200 bg-purple-50 text-purple-700 hover:bg-purple-100"
+                                            onClick={() => {
+                                                setEmail('sarah.manager@bank-xyz.com');
+                                                setPassword('password123');
+                                                setSelectedRole('SUPERVISOR');
+                                                toast.info('Auto-filled: Supervisor Credentials');
+                                            }}
+                                        >
+                                            <CheckCircle2 className="w-3 h-3 mr-2" />
+                                            Supervisor
+                                        </Button>
+                                        <Button
+                                            variant="outline"
+                                            size="sm"
+                                            className="text-xs justify-start border-emerald-200 bg-emerald-50 text-emerald-700 hover:bg-emerald-100"
+                                            onClick={() => {
+                                                setEmail('michael.finance@bank-xyz.com');
+                                                setPassword('password123');
+                                                setSelectedRole('FINANCE');
+                                                toast.info('Auto-filled: Finance Credentials');
+                                            }}
+                                        >
+                                            <CheckCircle2 className="w-3 h-3 mr-2" />
+                                            Finance
+                                        </Button>
+                                        <Button
+                                            variant="outline"
+                                            size="sm"
+                                            className="text-xs justify-start border-slate-200 bg-slate-50 text-slate-700 hover:bg-slate-100"
+                                            onClick={() => {
+                                                setEmail('admin@bank-xyz.com');
+                                                setPassword('admin123');
+                                                setSelectedRole('ADMIN');
+                                                toast.info('Auto-filled: Admin Credentials');
+                                            }}
+                                        >
+                                            <CheckCircle2 className="w-3 h-3 mr-2" />
+                                            Admin
+                                        </Button>
+                                    </div>
                                 </div>
 
                                 <div className="space-y-2">
                                     <Label htmlFor="email">Work Email</Label>
                                     <div className="relative">
                                         <Mail className="absolute left-3 top-3 h-4 w-4 text-slate-400" />
-                                        <Input id="email" placeholder="user@bank-xyz.com" className="pl-9" defaultValue="alexander@bank-xyz.com" />
+                                        <Input
+                                            id="email"
+                                            placeholder="user@bank-xyz.com"
+                                            className="pl-9"
+                                            value={email}
+                                            onChange={(e) => setEmail(e.target.value)}
+                                        />
                                     </div>
                                 </div>
                                 <div className="space-y-2">
                                     <Label htmlFor="password">Password</Label>
                                     <div className="relative">
                                         <Lock className="absolute left-3 top-3 h-4 w-4 text-slate-400" />
-                                        <Input id="password" type="password" className="pl-9" defaultValue="password123" />
+                                        <Input
+                                            id="password"
+                                            type="password"
+                                            className="pl-9"
+                                            value={password}
+                                            onChange={(e) => setPassword(e.target.value)}
+                                        />
                                     </div>
                                 </div>
                             </CardContent>
                             <CardFooter>
                                 <Button
                                     className="w-full bg-[#0052CC] hover:bg-blue-700"
-                                    onClick={() => {
-                                        const roleSelect = document.getElementById('role-selector') as HTMLSelectElement;
-                                        handleLogin(roleSelect.value as any);
-                                    }}
+                                    onClick={() => handleLogin(selectedRole as any)}
                                     disabled={isLoading}
                                 >
                                     {isLoading ? 'Authenticating...' : (
                                         <>
-                                            Sign In <ArrowRight className="ml-2 h-4 w-4" />
+                                            Sign In As {selectedRole} <ArrowRight className="ml-2 h-4 w-4" />
                                         </>
                                     )}
                                 </Button>
                             </CardFooter>
                         </Card>
                         <div className="mt-4 text-center text-xs text-slate-500">
-                            <p>Select a role above to simulate different user flows.</p>
+                            <p>Use the buttons above to simulate different user flows.</p>
                         </div>
                     </TabsContent>
 
@@ -140,25 +196,25 @@ export default function LoginPage() {
                     <TabsContent value="vendor">
                         <Card className="border-0 shadow-xl bg-white/80 backdrop-blur-sm">
                             <CardHeader>
-                                <CardTitle>Vendor Portal</CardTitle>
-                                <CardDescription>Secure access for registered suppliers.</CardDescription>
+                                <CardTitle>Portal Vendor</CardTitle>
+                                <CardDescription>Akses aman untuk rekanan terdaftar.</CardDescription>
                             </CardHeader>
                             <CardContent className="space-y-4">
                                 <div className="bg-blue-50 p-3 rounded-lg border border-blue-100 flex gap-3">
                                     <CheckCircle2 className="w-5 h-5 text-blue-600 shrink-0" />
                                     <p className="text-xs text-blue-800">
-                                        You are accessing the <strong>Bank XYZ Procurement Gateway</strong>. All activities are monitored.
+                                        Anda mengakses <strong>Gerbang Pengadaan Bank XYZ</strong>. Semua aktivitas dipantau.
                                     </p>
                                 </div>
                                 <div className="space-y-2">
-                                    <Label htmlFor="v-email">Registered Email</Label>
+                                    <Label htmlFor="v-email">Email Terdaftar</Label>
                                     <div className="relative">
                                         <Mail className="absolute left-3 top-3 h-4 w-4 text-slate-400" />
                                         <Input id="v-email" placeholder="contact@vendor.com" className="pl-9" defaultValue="sales@pt-global.com" />
                                     </div>
                                 </div>
                                 <div className="space-y-2">
-                                    <Label htmlFor="v-password">Password</Label>
+                                    <Label htmlFor="v-password">Kata Sandi</Label>
                                     <div className="relative">
                                         <Lock className="absolute left-3 top-3 h-4 w-4 text-slate-400" />
                                         <Input id="v-password" type="password" className="pl-9" defaultValue="vendor123" />
@@ -171,16 +227,16 @@ export default function LoginPage() {
                                     onClick={() => handleLogin('VENDOR')}
                                     disabled={isLoading}
                                 >
-                                    {isLoading ? 'Verifying...' : (
+                                    {isLoading ? 'Memverifikasi...' : (
                                         <>
-                                            Access Portal <ArrowRight className="ml-2 h-4 w-4" />
+                                            Akses Portal <ArrowRight className="ml-2 h-4 w-4" />
                                         </>
                                     )}
                                 </Button>
                             </CardFooter>
                         </Card>
                         <div className="mt-4 text-center text-xs text-slate-500">
-                            <p>Demo Vendor: sales@pt-global.com / vendor123</p>
+                            <p>Vendor Demo: sales@pt-global.com / vendor123</p>
                         </div>
                     </TabsContent>
                 </Tabs>
