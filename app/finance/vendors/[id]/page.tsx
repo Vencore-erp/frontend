@@ -2,7 +2,7 @@
 
 import React from 'react';
 import Link from 'next/link';
-import { ArrowLeft, Building, CreditCard, FileText, History, Download, DollarSign } from 'lucide-react';
+import { ArrowLeft, Building, CreditCard, FileText, History, Download, DollarSign, CheckCircle, XCircle, Eye } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { StatusBadge } from '@/components/ui/status-badge';
 import { Button } from '@/components/ui/button';
