@@ -11,7 +11,7 @@ export function Header() {
         <header className="h-16 bg-white border-b border-slate-200 px-8 flex items-center justify-between sticky top-0 z-40 shadow-sm">
             {/* Breadcrumbs */}
             <div className="flex items-center text-sm text-slate-500 capitalize">
-                <span className="font-semibold text-[#0B1120]">NEXUS</span>
+                <span className="font-semibold text-[#0B1120]">PT XYZ E-PROCUREMENT</span>
                 {segments.map((segment, index) => (
                     <div key={segment} className="flex items-center">
                         <ChevronRight className="w-4 h-4 mx-2 text-slate-300" />

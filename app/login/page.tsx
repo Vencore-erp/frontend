@@ -63,7 +63,7 @@ export default function LoginPage() {
                             <Building2 className="w-6 h-6" />
                         </div>
                         <span className="font-bold text-2xl text-slate-900 tracking-tight">
-                            NEXUS<span className="font-light text-slate-500">PROCURA</span>
+                            PT XYZ<span className="font-light text-slate-500"> E-PROCUREMENT</span>
                         </span>
                     </div>
                 </div>

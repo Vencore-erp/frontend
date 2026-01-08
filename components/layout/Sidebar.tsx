@@ -74,7 +74,7 @@ export function Sidebar({ role }: SidebarProps) {
             <div className="h-16 flex items-center px-6 border-b border-white/10">
                 <Building2 className="w-5 h-5 text-white mr-3" />
                 <span className="font-bold text-white text-lg tracking-tight">
-                    NEXUS<span className="font-light text-slate-400">PROCURA</span>
+                    PT XYZ<span className="font-light text-slate-400"> E-PROCUREMENT</span>
                 </span>
             </div>
 
